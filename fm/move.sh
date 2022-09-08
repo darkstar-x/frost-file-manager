@@ -1,37 +1,7 @@
 #!/usr/bin/env bash
 
-### COLORS
-OFF='\e[0m'           # Text Reset
-
-# Normal Colors
-BLK='\e[0;30m'        # Black
-RED='\e[0;31m'        # Red
-GRN='\e[0;32m'        # Green
-YLW='\e[0;33m'        # Yellow
-BLU='\e[0;34m'        # Blue
-PRL='\e[0;35m'        # Purple
-CYN='\e[0;36m'        # Cyan
-WHT='\e[0;37m'        # White
-
-# Bold Colors
-BLUB='\e[1;34m'        # Blue
-YLWB='\e[1;33m'        # Yellow
-CYNB='\e[1;96m'        # Cyan
-REDB='\e[1;91m'        # Red
-
-# Light Colors
-BLKL='\e[0;90m'        # Black
-REDL='\e[0;91m'        # Red
-GRNL='\e[0;92m'        # Green
-YLWL='\e[0;93m'        # Yellow
-BLUL='\e[0;94m'        # Blue
-PRLL='\e[0;95m'        # Purple
-CYNL='\e[0;96m'        # Cyan
-WHTL='\e[0;97m'        # White
-
-# Underline Colors
-WHTU='\033[4;37m'       # White
-
+# Import colors
+source colors/set_colors.sh
 
 # CLear the terminal
 clear
@@ -49,17 +19,46 @@ icon=' '
 ### START
 MOVE_FILES() {
   # Check path of files by extensions
-  printf "${GRNL}${icon}Path of IMG: ${OFF}"
-  read img_path
+  printf "${GRNL}${icon}Do you want to separate the images by extension? [y/N]: ${OFF}"
+  read option
 
-  printf "${GRNL}${icon}Path of APK: ${OFF}"
-  read apk_path
+  # Check user option
+  if [ "$option" = "y" ]; then
+    printf "${GRNL}${icon}Path of .jpg: ${OFF}"
+    read jpg_path
 
-  printf "${GRNL}${icon}Path of RAR: ${OFF}"
-  read rar_path
+    printf "${GRNL}${icon}Path of .png: ${OFF}"
+    read png_path
 
-  printf "${GRNL}${icon}Path of ZIP: ${OFF}"
-  read zip_path
+    printf "${GRNL}${icon}Path of .jpeg: ${OFF}"
+    read jpeg_path
+    
+    printf "${GRNL}${icon}OK...\n${OFF}"
+
+  else
+    printf "${GRNL}${icon}Path of IMG: ${OFF}"
+    read img_path
+  fi
+  
+  # Separate files by extension or not
+  printf "\n${GRNL}${icon}Do you want to separate all compressed files by extension? [y/N] ${OFF}"
+  read option_
+
+  # Check user option
+  if [ "$option_" = "y" -o "$option_" = "Y" ]; then
+    printf "${GRNL}${icon}Path of APK: ${OFF}"
+    read apk_path
+
+    printf "${GRNL}${icon}Path of RAR: ${OFF}"
+    read rar_path
+
+    printf "${GRNL}${icon}Path of ZIP: ${OFF}"
+    read zip_path
+
+  else
+    printf "${GRNL}${icon}Path of compress file: ${OFF}"
+    read compress_path
+  fi
 
   printf "\n${REDL}${icon}${OFF}${REDB}Cleaning all downloads${OFF}\n"
 
