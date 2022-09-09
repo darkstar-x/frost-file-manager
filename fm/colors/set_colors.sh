@@ -1,3 +1,5 @@
+clear
+
 ### COLORS
 OFF='\e[0m'           # Text Reset
 

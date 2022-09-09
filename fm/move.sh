@@ -3,9 +3,6 @@
 # Import colors
 source colors/set_colors.sh
 
-# CLear the terminal
-clear
-
 ### LOGO ASCII
 printf "${CYNB}
  ____ ____ ____ ____ ___   ____ _ _    ____ 
@@ -38,6 +35,16 @@ MOVE_FILES() {
   else
     printf "${GRNL}${icon}Path of IMG: ${OFF}"
     read img_path
+    printf "${GRNL}${icon}OK...\n${OFF}"
+
+  fi
+
+  if [ "$option" = "n" -o "$option" = "N" ]; then
+    mv -v *.jpg $img_path
+    mv -v *.png $img_path
+    mv -v *.jpeg $img_path
+    mv -v *.webp $img_path
+
   fi
   
   # Separate files by extension or not
@@ -62,10 +69,7 @@ MOVE_FILES() {
 
   printf "\n${REDL}${icon}${OFF}${REDB}Cleaning all downloads${OFF}\n"
 
-  #mv -v *.jpg ~/.static_img | lolcat --24bit
-  #mv -v *.png ~/.static_img | lolcat --24bit
-  #mv -v *.jpeg ~/.static_img | lolcat --24bit
-  #mv -v *.apk /ssf/compress/apk | lolcat --24bit
+   #mv -v *.apk /ssf/compress/apk | lolcat --24bit
   #mv -v *.rar /ssf/compress/rar | lolcat --24bit
   #mv -v *.zip /ssf/compress/zip | lolcat --24bit
 }
