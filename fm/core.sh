@@ -4,16 +4,13 @@
 source colors/set_colors.sh
 
 ### LOGO ASCII
-printf "${CYNB}
- ____ ____ ____ ____ ___   ____ _ _    ____ 
-|___ |__/ |  | [__   |    |___ | |    |___ 
-|    |  \ |__| ___]  |    |    | |___ |___${OFF}\n${PRLL}by HXVRMXNV${OFF}"
+source banner/default.sh
 
 ### SETERS
 PWD=$(pwd $path)
 icon=' '
 
-### START
+# User input and group files for mv
 MOVE_FILES() {
   # Check path of files by extensions
   printf "${GRNL}${icon}Do you want to separate the images by extension? [y/N]: ${OFF}"
@@ -32,21 +29,17 @@ MOVE_FILES() {
     
     printf "${GRNL}${icon}OK...\n${OFF}"
 
-  else
+  elif [ "$option" = "n" -o "$option" = "N" ]; then
     printf "${GRNL}${icon}Path of IMG: ${OFF}"
     read img_path
     printf "${GRNL}${icon}OK...\n${OFF}"
-
+    
+    #mv -v *.jpg $img_path
+    #mv -v *.png $img_path
+    #mv -v *.jpeg $img_path
+    #mv -v *.webp $img_path
   fi
 
-  if [ "$option" = "n" -o "$option" = "N" ]; then
-    mv -v *.jpg $img_path
-    mv -v *.png $img_path
-    mv -v *.jpeg $img_path
-    mv -v *.webp $img_path
-
-  fi
-  
   # Separate files by extension or not
   printf "\n${GRNL}${icon}Do you want to separate all compressed files by extension? [y/N] ${OFF}"
   read option_
