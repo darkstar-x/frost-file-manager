@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
-# Import colors
+### Import colors
 source colors/set_colors.sh
 
-### LOGO ASCII
+### Import banner
 source banner/default.sh
 
 ### SETERS
 PWD=$(pwd $path)
-icon=' '
+icon=" "
+warning=" "
 
 # User input and group files for mv
 MOVE_FILES() {
@@ -60,7 +61,7 @@ MOVE_FILES() {
     read compress_path
   fi
 
-  printf "\n${REDL}${icon}${OFF}${REDB}Cleaning all downloads${OFF}\n"
+  printf "\n${REDL}${warning}${OFF}${REDB}Cleaning all downloads${OFF}\n"
 
    #mv -v *.apk /ssf/compress/apk | lolcat --24bit
   #mv -v *.rar /ssf/compress/rar | lolcat --24bit
@@ -68,20 +69,27 @@ MOVE_FILES() {
 }
 
 # Entry point
-printf "\n\n${GRNL}${icon}Enter the absolute path: ${OFF}"
-read path ; cd $path 
+printf "\n\n${YLWL}${warning}Do you want to continue or go back to the main menu? [y/n] ${OFF}"
+read chosen_option
 
-printf "${REDL}${icon}Are you aware that you entered the path correctly? [y/N]: ${OFF}"
-read option
+if [ "$chosen_option" == "y" -o "$chosen_option" == "Y" ]; then
 
-# Check user confirmation
-if [ "$option" = "y" ]; then
-  printf "${YLWL}${icon}Using current path:${OFF} ${PWD}\n\n"
-  MOVE_FILES
+  printf "\n\n${GRNL}${icon}Enter the absolute path: ${OFF}"
+  read path ; cd $path 
+
+  printf "${REDL}${warning}Are you aware that you entered the path correctly? [y/N]: ${OFF}"
+  read option
+
+  # Check user confirmation
+  if [ "$option" == "y" ]; then
+    printf "${YLWL}${icon}Using current path:${OFF} ${PWD}\n\n"
+    MOVE_FILES
+  else
+    printf "${PRLL}${warning}Approaching the operation!${OFF}\n"
+    exit 1
+  fi
+
+  printf "${GRNL}${icon}Exiting with code 0${OFF}\n"
 else
-  printf "${PRLL}${icon}Approaching the operation!${OFF}\n"
-  exit 1
+  ./screen.sh
 fi
-
-printf "${GRNL}${icon}Exiting with code 0${OFF}\n"
-
