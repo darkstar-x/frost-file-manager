@@ -10,6 +10,7 @@ printf "\n\n[0] Clean All Dowloads"
 printf "\n[1] Option"
 printf "\n[2] Option 2"
 printf "\n[3] Help"
+printf "\n[3] Support me!"
 printf "\n[4] Exit\n"
 
 printf "\n${GRN}Chonse your option?${OFF} "

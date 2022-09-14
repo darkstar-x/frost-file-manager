@@ -9,12 +9,12 @@ source banner/default.sh
 ### SETERS
 PWD=$(pwd $path)
 icon=" "
-warning=" "
+warning=" "
 
 # User input and group files for mv
 MOVE_FILES() {
   # Check path of files by extensions
-  printf "${GRNL}${icon}Do you want to separate the images by extension? [y/N]: ${OFF}"
+  printf "${GRNL}${icon}Do you want to separate the images by extension (Y)es or (N)o ? ${OFF}"
   read option
 
   # Check user option
@@ -29,6 +29,10 @@ MOVE_FILES() {
     read jpeg_path
     
     printf "${GRNL}${icon}OK...\n${OFF}"
+    
+    #mv -v *.jpg $jpg_path
+    #mv -v *.png $jpeg_path
+    #mv -v *.jpeg $png_path
 
   elif [ "$option" = "n" -o "$option" = "N" ]; then
     printf "${GRNL}${icon}Path of IMG: ${OFF}"
@@ -42,7 +46,7 @@ MOVE_FILES() {
   fi
 
   # Separate files by extension or not
-  printf "\n${GRNL}${icon}Do you want to separate all compressed files by extension? [y/N] ${OFF}"
+  printf "\n${GRNL}${icon}Do you want to separate all compressed files by extension (Y)es or (N)o ? ${OFF}"
   read option_
 
   # Check user option
@@ -69,7 +73,7 @@ MOVE_FILES() {
 }
 
 # Entry point
-printf "\n\n${YLWL}${warning}Do you want to continue or go back to the main menu? [y/n] ${OFF}"
+printf "\n\n${YLWL}${warning}Do you want to continue or go back to the main menu (Y)es or (N)o ? ${OFF}"
 read chosen_option
 
 if [ "$chosen_option" == "y" -o "$chosen_option" == "Y" ]; then
@@ -77,7 +81,7 @@ if [ "$chosen_option" == "y" -o "$chosen_option" == "Y" ]; then
   printf "\n\n${GRNL}${icon}Enter the absolute path: ${OFF}"
   read path ; cd $path 
 
-  printf "${REDL}${warning}Are you aware that you entered the path correctly? [y/N]: ${OFF}"
+  printf "${REDL}${warning}Are you aware that you entered the path correctly (Y)es or (N)o ? ${OFF}"
   read option
 
   # Check user confirmation
