@@ -16,14 +16,18 @@ printf "\n[4] Exit\n"
 printf "\n${GRN}Chonse your option?${OFF} "
 read user_option
 
+SUPPORT() {
+  printf "${PRLL}Donation: leonardimelo43@gmail.com\n${OFF}"
+}
+
 case "$user_option" in
-  "0") source ./core.sh
+  "0") sh components/core.sh
     ;;
   "1") echo "--> 1"
     ;;
   "2") echo "--> 2"
     ;;
-  "3") echo "--> 3"
+  "3") SUPPORT
     ;;
   "4") printf "${RED}\nExiting...${OFF}\n"
        exit 0

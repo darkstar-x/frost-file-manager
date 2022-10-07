@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 
 ### Import colors
+pwd
+ls
+
+cd ./colors/set_colors.sh
+pwd
+ls
 source colors/set_colors.sh
 
 ### Import banner
-source banner/default.sh
+source banner/default.sh 
 
 ### SETERS
 PWD=$(pwd $path)
@@ -39,10 +45,8 @@ MOVE_FILES() {
     read img_path
     printf "${GRNL}${icon}OK...\n${OFF}"
     
-    #mv -v *.jpg $img_path
-    #mv -v *.png $img_path
-    #mv -v *.jpeg $img_path
-    #mv -v *.webp $img_path
+    mv *.{jpg,jpeg,png,webp} $img_path 
+
   fi
 
   # Separate files by extension or not
@@ -50,7 +54,7 @@ MOVE_FILES() {
   read option_
 
   # Check user option
-  if [ "$option_" = "y" -o "$option_" = "Y" ]; then
+  if [ "$option_" = "y" -o 42G"$option_" = "Y" ]; then
     printf "${GRNL}${icon}Path of APK: ${OFF}"
     read apk_path
 
