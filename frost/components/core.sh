@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 
 ### Import colors
-pwd
-ls
+full_path="/frost/colors/set_colors.sh"
 
-cd ./colors/set_colors.sh
-pwd
-ls
 source colors/set_colors.sh
+pwd
 
 ### Import banner
 source banner/default.sh 

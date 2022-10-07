@@ -21,7 +21,7 @@ SUPPORT() {
 }
 
 case "$user_option" in
-  "0") sh components/core.sh
+  "0") source components/core.sh
     ;;
   "1") echo "--> 1"
     ;;
