@@ -36,4 +36,3 @@ case "$user_option" in
     echo "Invalid option 0x012"
     exit 1
 esac
-
